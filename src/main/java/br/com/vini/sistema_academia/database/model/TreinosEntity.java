@@ -7,25 +7,22 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "avaliacoes_fisicas")
+@Table(name = "treinos")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class AvaliacoesFisicasEntity {
+public class TreinosEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)//para gerar o id automaticamente no MySQL
     private Integer id;
 
     @Column(nullable = false)
-    private BigDecimal altura;
+    private String nome;
 
-    @Column(nullable = false)
-    private BigDecimal peso;
-
-    @Column(name = "porcentagem_gordura_corporal", nullable = false)
-    private BigDecimal porcentagemGorduraCorporal;
-
+    @ManyToOne
+    @JoinColumn(name = "alunos_id")
+    private AlunosEntity alunos;
 }
