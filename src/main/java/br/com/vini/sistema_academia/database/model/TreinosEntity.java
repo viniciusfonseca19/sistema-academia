@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -25,4 +27,12 @@ public class TreinosEntity {
     @ManyToOne
     @JoinColumn(name = "alunos_id")
     private AlunosEntity alunos;
+
+    @ManyToMany
+    @JoinTable(
+            name = "treino_exercicio",
+            joinColumns = @JoinColumn(name = "treino_id"),
+            inverseJoinColumns = @JoinColumn(name = "exercicio_id")
+    )
+    private Set<ExerciciosEntity> exercicios = new HashSet<>();
 }
