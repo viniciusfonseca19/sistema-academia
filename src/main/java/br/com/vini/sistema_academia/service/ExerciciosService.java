@@ -2,6 +2,7 @@ package br.com.vini.sistema_academia.service;
 
 import br.com.vini.sistema_academia.database.model.ExerciciosEntity;
 import br.com.vini.sistema_academia.database.repository.IExerciciosRepository;
+import br.com.vini.sistema_academia.dto.ExercicioDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,18 @@ public class ExerciciosService {
 
     private final IExerciciosRepository exerciciosRepository;
 
+    //MÉTODO PARA GET
     public List<ExerciciosEntity>findAll(){
         return exerciciosRepository.findAll(); //findAll método criado dentro do CrudRepository
     }
 
+    //MÉTODO PARA POST
+    public void save(ExercicioDto exercicioDto){
+        ExerciciosEntity exercicios = ExerciciosEntity.builder()
+                .nome(exercicioDto.getNome())
+                .grupoMuscular(exercicioDto.getGrupoMuscular())
+                .build();
+
+        exerciciosRepository.save(exercicios);
+    }
 }
