@@ -1,6 +1,7 @@
 package br.com.vini.sistema_academia.dto;
 
 import lombok.*;
+import org.springframework.validation.annotation.Validated;
 
 @Getter
 @Setter
@@ -8,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Builder
+@Validated
 public class ExercicioDto {
 
     private String nome;

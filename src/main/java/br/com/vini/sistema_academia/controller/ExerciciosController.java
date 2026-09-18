@@ -3,6 +3,7 @@ package br.com.vini.sistema_academia.controller;
 import br.com.vini.sistema_academia.database.model.ExerciciosEntity;
 import br.com.vini.sistema_academia.dto.ExercicioDto;
 import br.com.vini.sistema_academia.service.ExerciciosService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class ExerciciosController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveExercicio(@RequestBody ExercicioDto exercicioDto){
+    public void saveExercicio(@Valid @RequestBody ExercicioDto exercicioDto){
         exerciciosService.save(exercicioDto);
     }
 }
