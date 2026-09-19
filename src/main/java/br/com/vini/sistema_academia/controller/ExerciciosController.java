@@ -28,4 +28,10 @@ public class ExerciciosController {
     public void saveExercicio(@Valid @RequestBody ExercicioDto exercicioDto){
         exerciciosService.save(exercicioDto);
     }
+
+    @GetMapping("/grupo/{grupoMuscular}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ExerciciosEntity>getExerciciosByGrupoMuscular(@PathVariable String grupoMuscular){
+        return exerciciosService.getExerciciosByGrupoMuscular(grupoMuscular);
+    }
 }
