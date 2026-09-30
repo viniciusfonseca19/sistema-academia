@@ -31,5 +31,10 @@ public class AvaliacaoFisicaService {
                 .altura(avaliacaoFisicaDto.getAltura())
                 .porcentagemGorduraCorporal(avaliacaoFisicaDto.getPorcentagemGorduraCorporal())
                 .build();
+
+        avaliacoesFisicas = avaliacaoFisicasRepository.save(avaliacoesFisicas);
+
+        alunos.setAvaliacoesFisicas(avaliacoesFisicas);
+        alunosRepository.save(alunos);
     }
 }
